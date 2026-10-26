@@ -219,35 +219,10 @@ class QuranApp {
   }
 
   bindEvents() {
-    // Layout Toggle (Desktop vs Mobile Preview)
-    const btnToggleLayout = document.getElementById("btnToggleLayout");
-    const layoutToggleIcon = document.getElementById("layoutToggleIcon");
-    const layoutToggleText = document.getElementById("layoutToggleText");
-    if (btnToggleLayout) {
-      btnToggleLayout.addEventListener("click", () => {
-        const isPreviewMobile = document.body.classList.toggle("preview-mobile");
-        if (isPreviewMobile) {
-          if (layoutToggleIcon) layoutToggleIcon.textContent = "🖥️";
-          if (layoutToggleText) layoutToggleText.textContent = "Kembali ke Mode Desktop";
-          this.showToast("📱 Pratinjau Tampilan HP aktif", "gold");
-        } else {
-          if (layoutToggleIcon) layoutToggleIcon.textContent = "📱";
-          if (layoutToggleText) layoutToggleText.textContent = "Pratinjau Mode HP";
-          this.showToast("🖥️ Mode Tampilan Desktop aktif", "success");
-        }
-        window.audioManager.playTap();
-      });
-    }
-
     // Header Menu button -> Open curriculum
     const btnHeaderMenu = document.getElementById("btnHeaderMenu");
     if (btnHeaderMenu) {
       btnHeaderMenu.addEventListener("click", () => this.openCurriculumModal());
-    }
-
-    const btnOpenCurriculumTop = document.getElementById("btnOpenCurriculumTop");
-    if (btnOpenCurriculumTop) {
-      btnOpenCurriculumTop.addEventListener("click", () => this.openCurriculumModal());
     }
 
     // Navigation Tabs & Bottom Nav Items
