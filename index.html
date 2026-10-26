@@ -347,23 +347,48 @@
                 </button>
               </div>
 
-              <div class="verse-action-bar">
+              <!-- TAMPILAN SATU AYAT PENUH (Full Verse Presentation) -->
+              <div class="full-verse-display-card">
+                <div class="full-verse-header">
+                  <div class="full-verse-header-left">
+                    <span class="full-verse-badge">📖 Teks Lengkap Ayat</span>
+                    <span class="full-verse-surah" id="fullVerseSurahRef">QS. An-Naba: 6–7</span>
+                  </div>
+                  <button class="btn-listen-ayat" id="btnListenAyatQuick" title="Dengarkan Tartil Misyari Rasyid">
+                    <span>🔊 Putar Tartil</span>
+                  </button>
+                </div>
+                
+                <!-- Ayat Al-Qur'an Penuh Berharakat Lengkap -->
+                <div class="arabic-text full-verse-arabic-text" id="fullVerseArabicText">
+                  أَلَمْ نَجْعَلِ الْأَرْضَ مِهَٰدًا ۝ وَالْجِبَالَ أَوْتَادًا ۝
+                </div>
+
+                <!-- Transliterasi & Terjemahan Lengkap -->
+                <div class="full-verse-meta-box">
+                  <div class="full-verse-phonetic" id="fullVersePhonetic">
+                    Alam naj'alil ardha mihaadaa, wal jibaala awtaadaa
+                  </div>
+                  <div class="full-verse-translation-text" id="fullVerseTranslation">
+                    "Bukankah Kami telah menjadikan bumi sebagai hamparan, dan gunung-gunung sebagai pasak?"
+                  </div>
+                </div>
+              </div>
+
+              <!-- Modul Latihan: Bedah Ayat & Identifikasi Tajwid -->
+              <div class="bedah-ayat-section-header">
                 <div style="display: flex; align-items: center; gap: 0.5rem;">
-                  <div class="verse-num-pill">1</div>
-                  <span style="font-size: 0.78rem; font-weight: 700; color: var(--primary-dark);" id="verseMission">Klik kata Mad 'Iwadh!</span>
+                  <span class="bedah-badge">🔍 Bedah Tajwid</span>
+                  <span style="font-size: 0.78rem; font-weight: 700; color: var(--primary-dark);" id="verseMission">Klik kata yang mengandung hukum bacaan!</span>
                 </div>
                 <div class="verse-icons-group">
-                  <span title="Salin / Bagikan">🔗</span>
-                  <span title="Tandai">🔖</span>
+                  <span title="Salin Ayat" id="btnCopyAyat" style="cursor: pointer;">📋</span>
+                  <span title="Tandai Belajar">🔖</span>
                 </div>
               </div>
 
               <!-- Clickable Arabic Words -->
               <div class="puzzle-answer-box" id="verseTokensContainer" style="border: none; background: #fafdfc; padding: 1.25rem 0.5rem;"></div>
-
-              <!-- Translation -->
-              <p id="verseTranslation" style="font-size: 0.85rem; color: var(--text-muted); font-style: italic; line-height: 1.5; margin-bottom: 0.5rem;"></p>
-              <p id="versePhonetic" style="font-size: 0.75rem; color: var(--primary-teal); font-weight: 600;"></p>
 
               <!-- Explanation Pop-up Card -->
               <div class="explanation-card" id="tajwidExplanationCard" style="display: none; margin-top: 1rem; background: var(--primary-soft); border: 1.5px solid var(--primary-emerald); border-radius: var(--radius-md); padding: 0.85rem;">

@@ -120,7 +120,7 @@ const APP_DATA = {
           { word: "وَالْجِبَالَ", isTarget: false, reason: "Hukum Al-Qamariyah dan Mad Thabi'i" },
           { word: "أَوْتَادًا", isTarget: true, reason: "Mad 'Iwadh: tanwin fathah pada huruf dal (دًا) di akhir waqaf, dibaca 'Awtaadaa' (2 harakat)" }
         ],
-        fullArabic: "أَلَمْ نَجْعَلِ الْأَرْضَ مِهَٰدًا ۝ وَالْجِبَالَ أَوْتَادًا",
+        fullArabic: "أَلَمْ نَجْعَلِ الْأَرْضَ مِهَٰدًا ۝ وَالْجِبَالَ أَوْتَادًا ۝",
         translation: "Bukankah Kami telah menjadikan bumi sebagai hamparan, dan gunung-gunung sebagai pasak?",
         audioPhonetic: "Alam naj'alil ardha mihaadaa, wal jibaala awtaadaa"
       },
@@ -151,23 +151,22 @@ const APP_DATA = {
           { word: "مِّنْ", isTarget: false, reason: "Idgham Mimi / Ghunnah" },
           { word: "خَوْفٍ", isTarget: true, reason: "Mad Layyin: Wawu sukun didahului kho' berharakat fathah (خَوْ), diwaqafkan pada fa'" }
         ],
-        fullArabic: "لِإِيلَافِ قُرَيْشٍ ۝ ... وَآمَنَهُم مِّنْ خَوْفٍ",
-        translation: "Karena kebiasaan orang-orang Quraisy... dan mengamankan mereka dari rasa ketakutan.",
-        audioPhonetic: "Li'iilaafi quraisy... Wa aamanahum min khauf"
+        fullArabic: "لِإِيلَافِ قُرَيْشٍ ۝ إِيلَافِهِمْ رِحْلَةَ الشِّتَاءِ وَالصَّيْفِ ۝ فَلْيَعْبُدُوا رَبَّ هَٰذَا الْبَيْتِ ۝ الَّذِي أَطْعَمَهُم مِّن جُوعٍ وَآمَنَهُم مِّنْ خَوْفٍ ۝",
+        translation: "Karena kebiasaan orang-orang Quraisy, (yaitu) kebiasaan mereka bepergian pada musim dingin dan musim panas. Maka hendaklah mereka menyembah Tuhan (pemilik) rumah ini (Ka'bah), yang telah memberi makanan kepada mereka untuk menghilangkan lapar dan mengamankan mereka dari rasa ketakutan.",
+        audioPhonetic: "Li'iilaafi quraisy. Iilaafihim rihlatasy syitaa'i wash shaif. Falya'buduu rabba haadzal bait. Alladzii ath'amahum min juu'iw wa aamanahum min khauf."
       },
       {
         id: "mad_aridh_1",
         title: "Mad 'Aridh Lissukun",
-        subtitle: "QS. Al-Fatihah: 2 & QS. Al-Baqarah: 3",
+        subtitle: "QS. Al-Fatihah: 2",
         hukumKey: "aridh",
         hukumName: "Mad 'Aridh Lissukun",
         surah: 1,
         ayahs: [
-          { surah: 1, ayah: 2 },
-          { surah: 2, ayah: 3 }
+          { surah: 1, ayah: 2 }
         ],
-        surahName: "QS. Al-Fatihah & Al-Baqarah",
-        ayahRange: "Al-Fatihah: 2 & Al-Baqarah: 3",
+        surahName: "QS. Al-Fatihah",
+        ayahRange: "Ayat 2",
         reciter: "Syaikh Misyari Rasyid Al-Afasy",
         ketukan: 6,
         beatsText: "2, 4, atau 6 Harakat (Tawasuth 4 / Thul 6)",
@@ -177,12 +176,11 @@ const APP_DATA = {
           { word: "الْحَمْدُ", isTarget: false, reason: "Hukum Al-Qamariyah dan Idzhar Syafawi" },
           { word: "لِلَّهِ", isTarget: false, reason: "Lam Jalalah Tarqiq" },
           { word: "رَبِّ", isTarget: false, reason: "Huruf berharakat biasa bertasydid" },
-          { word: "الْعَالَمِينَ", isTarget: true, reason: "Mad 'Aridh Lissukun: Ya' mad bertemu huruf nun hidup di akhir ayat yang diwaqafkan (dibaca 2, 4, atau 6 harakat)" },
-          { word: "يُنفِقُونَ", isTarget: true, reason: "Mad 'Aridh Lissukun: Wawu mad bertemu nun hidup di akhir waqaf ayat" }
+          { word: "الْعَالَمِينَ", isTarget: true, reason: "Mad 'Aridh Lissukun: Ya' mad bertemu huruf nun hidup di akhir ayat yang diwaqafkan (dibaca 2, 4, atau 6 harakat)" }
         ],
-        fullArabic: "الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ ۝ وَمِمَّا رَزَقْنَاهُمْ يُنفِقُونَ",
-        translation: "Segala puji bagi Allah, Tuhan semesta alam... dan sebagian rezeki yang Kami anugerahkan, mereka infakkan.",
-        audioPhonetic: "Alhamdulillahi rabbil 'aalamiin... Wa mimmaa razaqnaahum yunfiquun"
+        fullArabic: "الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ ۝",
+        translation: "Segala puji bagi Allah, Tuhan seluruh alam.",
+        audioPhonetic: "Alhamdulillaahi Rabbil 'aalamiin"
       }
     ],
 

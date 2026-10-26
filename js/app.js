@@ -140,6 +140,10 @@ class QuranApp {
     this.verseMissionElem = document.getElementById("verseMission");
     this.verseTranslationElem = document.getElementById("verseTranslation");
     this.versePhoneticElem = document.getElementById("versePhonetic");
+    this.fullVerseArabicText = document.getElementById("fullVerseArabicText");
+    this.fullVerseSurahRef = document.getElementById("fullVerseSurahRef");
+    this.fullVersePhonetic = document.getElementById("fullVersePhonetic");
+    this.fullVerseTranslation = document.getElementById("fullVerseTranslation");
     this.explanationCard = document.getElementById("tajwidExplanationCard");
     this.explanationTitle = document.getElementById("explanationTitle");
     this.explanationContent = document.getElementById("explanationContent");
@@ -456,6 +460,48 @@ class QuranApp {
       });
     }
 
+    // Quick Play Full Verse button
+    const btnListenAyatQuick = document.getElementById("btnListenAyatQuick");
+    if (btnListenAyatQuick) {
+      btnListenAyatQuick.addEventListener("click", () => {
+        const item = this.getCurrentTajwidItem();
+        if (item) {
+          if (window.audioManager.isQuranPlaying) {
+            window.audioManager.toggleQuranPlay();
+          } else {
+            if (item.ayahs && item.ayahs.length) {
+              window.audioManager.playQuranAyahs(item.ayahs, {
+                title: item.title,
+                subtitle: `${item.subtitle || item.surahName || ''} • Syaikh Misyari Rasyid`
+              });
+              this.showToast(`🎙️ Memutar Tartil: ${item.subtitle || item.title}`, "gold");
+            } else {
+              window.audioManager.speakArabic(item.fullArabic);
+              this.showToast("🔊 Memutar pelafalan tartil...", "success");
+            }
+          }
+        }
+      });
+    }
+
+    // Copy Full Verse button
+    const btnCopyAyat = document.getElementById("btnCopyAyat");
+    if (btnCopyAyat) {
+      btnCopyAyat.addEventListener("click", () => {
+        const item = this.getCurrentTajwidItem();
+        if (item) {
+          const textToCopy = `${item.fullArabic}\n\n"${item.translation}"\n(${item.subtitle || item.title})`;
+          if (navigator.clipboard) {
+            navigator.clipboard.writeText(textToCopy).then(() => {
+              this.showToast("📋 Ayat & terjemahan berhasil disalin!", "success");
+            }).catch(() => {
+              this.showToast("📋 Berhasil memilih teks ayat", "success");
+            });
+          }
+        }
+      });
+    }
+
     // 2. Play Last Read (QS. Al-Fajr: 15) on Home
     const btnPlayLastRead = document.getElementById("btnPlayLastRead");
     if (btnPlayLastRead) {
@@ -682,6 +728,12 @@ class QuranApp {
     if (this.verseMissionElem) this.verseMissionElem.textContent = item.mission;
     if (this.verseTranslationElem) this.verseTranslationElem.textContent = `"${item.translation}"`;
     if (this.versePhoneticElem) this.versePhoneticElem.textContent = `Pelafalan: ${item.audioPhonetic}`;
+
+    // Full Continuous Verse Card Display
+    if (this.fullVerseArabicText) this.fullVerseArabicText.textContent = item.fullArabic;
+    if (this.fullVerseSurahRef) this.fullVerseSurahRef.textContent = item.subtitle || item.surahName || item.title;
+    if (this.fullVersePhonetic) this.fullVersePhonetic.textContent = item.audioPhonetic || "";
+    if (this.fullVerseTranslation) this.fullVerseTranslation.textContent = `"${item.translation}"`;
 
     // Hide previous explanation
     if (this.explanationCard) {
