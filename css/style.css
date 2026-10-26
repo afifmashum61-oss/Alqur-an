@@ -74,11 +74,13 @@ body {
   background-attachment: fixed;
   color: var(--text-main);
   min-height: 100vh;
+  min-height: 100dvh;
+  margin: 0;
+  padding: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  padding: 1.25rem 0.75rem 2rem;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -95,9 +97,9 @@ body {
    TOP BAR (LAYOUT TOGGLE & QUICK INFO)
    ========================================================================== */
 .top-utility-bar {
+  display: none; /* Auto-hidden on native mobile phones */
   width: 100%;
-  max-width: 440px;
-  display: flex;
+  max-width: 1200px;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 0.75rem;
@@ -105,17 +107,13 @@ body {
   transition: max-width 0.3s ease;
 }
 
-.body-widescreen .top-utility-bar {
-  max-width: 1120px;
-}
-
 .mode-toggle-btn {
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
-  padding: 0.4rem 0.85rem;
+  padding: 0.45rem 0.95rem;
   border-radius: var(--radius-full);
-  background: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.9);
   backdrop-filter: blur(8px);
   border: 1px solid var(--border-subtle);
   font-size: 0.75rem;
@@ -128,7 +126,9 @@ body {
 
 .mode-toggle-btn:hover {
   background: #ffffff;
+  color: var(--primary-emerald);
   transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
 }
 
 .kma-badge-pill {
@@ -142,27 +142,22 @@ body {
 }
 
 /* ==========================================================================
-   APP DEVICE SHELL (MYQURAN MOBILE / TABLET FRAME)
+   APP DEVICE SHELL (RESPONSIVE WEB & MOBILE APP CONTAINER)
    ========================================================================== */
 .app-device-frame {
   width: 100%;
-  max-width: 440px;
+  max-width: 100%;
   background: var(--app-bg);
-  border-radius: 36px;
-  box-shadow: var(--shadow-device);
+  border-radius: 0;
+  box-shadow: none;
   overflow: hidden;
   position: relative;
   display: flex;
   flex-direction: column;
-  height: 92vh;
-  max-height: 900px;
-  border: 4px solid #ffffff;
-  transition: max-width 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.body-widescreen .app-device-frame {
-  max-width: 1120px;
-  border-radius: 28px;
+  height: 100vh;
+  height: 100dvh;
+  border: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* App Header */
@@ -171,11 +166,90 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1rem 1.35rem 0.65rem;
+  padding: 0.85rem 1.15rem 0.65rem;
   background: rgba(248, 251, 251, 0.98);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--border-subtle);
   z-index: 40;
+  gap: 0.75rem;
+}
+
+.header-brand-group {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.header-right-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Desktop Header Navigation */
+.desktop-header-nav {
+  display: none;
+  align-items: center;
+  gap: 0.35rem;
+  background: rgba(16, 185, 129, 0.08);
+  padding: 0.3rem 0.4rem;
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(16, 185, 129, 0.15);
+}
+
+.desktop-nav-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.4rem 0.85rem;
+  border-radius: var(--radius-full);
+  background: transparent;
+  border: none;
+  font-family: var(--font-latin);
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--primary-dark);
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  white-space: nowrap;
+}
+
+.desktop-nav-btn:hover {
+  background: rgba(255, 255, 255, 0.85);
+  color: var(--primary-emerald);
+}
+
+.desktop-nav-btn.active {
+  background: var(--primary-emerald);
+  color: #ffffff;
+  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.35);
+}
+
+.d-nav-icon {
+  font-size: 0.95rem;
+}
+
+/* Generic Responsive Two Column Grid System */
+.responsive-two-col-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  width: 100%;
+}
+
+.grid-col-left, .grid-col-right {
+  width: 100%;
+}
+
+.ai-split-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  width: 100%;
+}
+
+.ai-split-left, .ai-split-right {
+  width: 100%;
 }
 
 .header-icon-btn {
@@ -1524,4 +1598,255 @@ body {
   width: 0%;
   transition: width 0.15s linear;
 }
+
+/* ==========================================================================
+   RESPONSIVE DESIGN SYSTEM (DESKTOP >= 768px & NATIVE MOBILE < 768px)
+   Otomatis Mode Desktop di Layar Komputer/Laptop, Otomatis Mode HP di Smartphone
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. DESKTOP STYLES (Screen >= 768px - Otomatis Aktif di Desktop/Laptop)
+   -------------------------------------------------------------------------- */
+@media (min-width: 768px) {
+  body {
+    padding: 1rem 1.5rem 1.5rem;
+    height: 100vh;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+
+  /* Top Utility Bar */
+  body:not(.preview-mobile) .top-utility-bar {
+    display: flex;
+    max-width: 1240px;
+    margin-bottom: 0.75rem;
+  }
+
+  /* App Device Frame: Luas, Mewah, & Proporsional */
+  body:not(.preview-mobile) .app-device-frame {
+    max-width: 1240px;
+    height: calc(100vh - 4.25rem);
+    min-height: 600px;
+    border-radius: 24px;
+    border: 1.5px solid rgba(16, 185, 129, 0.22);
+    box-shadow: 0 20px 50px -10px rgba(6, 78, 59, 0.16), 0 0 0 1px rgba(16, 185, 129, 0.08);
+  }
+
+  /* Desktop Header Navigation di App Header */
+  body:not(.preview-mobile) .desktop-header-nav {
+    display: flex;
+  }
+
+  /* Sembunyikan Floating Bottom Nav di Layar Desktop */
+  body:not(.preview-mobile) .floating-bottom-nav {
+    display: none !important;
+  }
+
+  /* Padding Konten untuk Desktop */
+  body:not(.preview-mobile) .app-content-body {
+    padding: 1.25rem 2.25rem 2.5rem;
+  }
+
+  /* 4 Feature Dashboard Tiles: 4 Kolom Berjejer Rapi */
+  body:not(.preview-mobile) .feature-tiles-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.25rem;
+    margin-bottom: 1.5rem;
+  }
+
+  /* Multi-Kolom Desktop Responsif */
+  body:not(.preview-mobile) .responsive-two-col-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    align-items: start;
+  }
+
+  /* AI Simulator Split Grid */
+  body:not(.preview-mobile) .ai-split-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.15fr;
+    gap: 1.5rem;
+    align-items: start;
+  }
+
+  /* Player Audio Syaikh Misyari Rasyid di Desktop: Melayang Nyaman di Kanan Bawah */
+  body:not(.preview-mobile) .global-audio-player {
+    position: fixed;
+    left: auto;
+    right: 2.5rem;
+    bottom: 2rem;
+    width: 440px;
+    max-width: calc(100vw - 5rem);
+    z-index: 99;
+    box-shadow: 0 16px 40px -4px rgba(6, 78, 59, 0.28);
+  }
+
+  /* Styling Tambahan Grid Tahfidz & Surah */
+  body:not(.preview-mobile) .matching-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  body:not(.preview-mobile) .surah-list-card {
+    height: 100%;
+  }
+
+  body:not(.preview-mobile) .surah-list-container {
+    max-height: 520px;
+    overflow-y: auto;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   2. PRATINJAU MODE HP (Jika Pengguna Desktop Mengklik 'Pratinjau Mode HP')
+   -------------------------------------------------------------------------- */
+body.preview-mobile {
+  padding: 0.75rem 0;
+  overflow-y: auto;
+  height: auto;
+  min-height: 100vh;
+}
+
+body.preview-mobile .top-utility-bar {
+  display: flex;
+  max-width: 420px;
+  margin-bottom: 0.65rem;
+}
+
+body.preview-mobile .app-device-frame {
+  max-width: 420px;
+  height: 840px;
+  max-height: calc(100vh - 4.5rem);
+  border-radius: 36px;
+  border: 6px solid #1e293b;
+  box-shadow: 0 25px 60px -12px rgba(0, 0, 0, 0.35);
+  position: relative;
+  overflow: hidden;
+}
+
+body.preview-mobile .desktop-header-nav {
+  display: none !important;
+}
+
+body.preview-mobile .floating-bottom-nav {
+  display: flex !important;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+}
+
+body.preview-mobile .app-content-body {
+  padding: 0.75rem 1.15rem 5.5rem;
+}
+
+body.preview-mobile .feature-tiles-grid {
+  grid-template-columns: 1fr 1fr;
+  gap: 0.85rem;
+}
+
+body.preview-mobile .responsive-two-col-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+body.preview-mobile .ai-split-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+body.preview-mobile .global-audio-player {
+  position: absolute;
+  left: 0.75rem;
+  right: 0.75rem;
+  bottom: 4.85rem;
+  width: auto;
+  z-index: 60;
+}
+
+/* --------------------------------------------------------------------------
+   3. NATIVE MOBILE PHONE STYLES (Screen < 768px - Otomatis di HP Android & iPhone)
+   -------------------------------------------------------------------------- */
+@media (max-width: 767px) {
+  body {
+    padding: 0;
+    margin: 0;
+    height: 100vh;
+    height: 100dvh;
+    overflow: hidden;
+  }
+
+  /* Utility bar disembunyikan total di HP agar 100% Native App Feel */
+  .top-utility-bar {
+    display: none !important;
+  }
+
+  /* Frame memenuhi layar penuh HP edge-to-edge tanpa border buatan */
+  .app-device-frame {
+    width: 100%;
+    max-width: 100%;
+    height: 100vh;
+    height: 100dvh;
+    border-radius: 0;
+    border: none;
+    box-shadow: none;
+  }
+
+  /* Navigasi desktop disembunyikan di HP */
+  .desktop-header-nav {
+    display: none !important;
+  }
+
+  /* Navigasi bawah melayang & tertempel rapi di bawah layar HP */
+  .floating-bottom-nav {
+    display: flex !important;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 4.25rem;
+    z-index: 50;
+  }
+
+  /* Konten scrollable dengan padding bawah agar tidak tertutup nav */
+  .app-content-body {
+    padding: 0.75rem 1.15rem 5.5rem;
+  }
+
+  /* Feature grid 2 kolom di HP */
+  .feature-tiles-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+  }
+
+  /* Kolom tersusun vertikal satu per satu di HP */
+  .responsive-two-col-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .ai-split-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  /* Player audio mengambang di atas bottom nav di HP */
+  .global-audio-player {
+    position: fixed;
+    left: 0.75rem;
+    right: 0.75rem;
+    bottom: 4.85rem;
+    width: auto;
+    z-index: 60;
+  }
+}
+
 

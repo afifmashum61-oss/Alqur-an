@@ -219,20 +219,21 @@ class QuranApp {
   }
 
   bindEvents() {
-    // Layout Toggle (Mobile vs Widescreen)
+    // Layout Toggle (Desktop vs Mobile Preview)
     const btnToggleLayout = document.getElementById("btnToggleLayout");
     const layoutToggleIcon = document.getElementById("layoutToggleIcon");
     const layoutToggleText = document.getElementById("layoutToggleText");
     if (btnToggleLayout) {
       btnToggleLayout.addEventListener("click", () => {
-        this.isWidescreen = !this.isWidescreen;
-        document.body.classList.toggle("body-widescreen", this.isWidescreen);
-        if (this.isWidescreen) {
+        const isPreviewMobile = document.body.classList.toggle("preview-mobile");
+        if (isPreviewMobile) {
           if (layoutToggleIcon) layoutToggleIcon.textContent = "🖥️";
-          if (layoutToggleText) layoutToggleText.textContent = "Mode Layar Lebar (Proyektor)";
+          if (layoutToggleText) layoutToggleText.textContent = "Kembali ke Mode Desktop";
+          this.showToast("📱 Pratinjau Tampilan HP aktif", "gold");
         } else {
           if (layoutToggleIcon) layoutToggleIcon.textContent = "📱";
-          if (layoutToggleText) layoutToggleText.textContent = "Mode Ponsel (myQuran)";
+          if (layoutToggleText) layoutToggleText.textContent = "Pratinjau Mode HP";
+          this.showToast("🖥️ Mode Tampilan Desktop aktif", "success");
         }
         window.audioManager.playTap();
       });
@@ -258,6 +259,14 @@ class QuranApp {
     });
 
     document.querySelectorAll(".nav-item-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const navTarget = btn.getAttribute("data-nav");
+        if (navTarget) this.switchTab(navTarget);
+      });
+    });
+
+    // Desktop Header Navigation Buttons
+    document.querySelectorAll(".desktop-nav-btn").forEach(btn => {
       btn.addEventListener("click", () => {
         const navTarget = btn.getAttribute("data-nav");
         if (navTarget) this.switchTab(navTarget);
@@ -577,6 +586,15 @@ class QuranApp {
 
     // Update bottom nav items
     document.querySelectorAll(".nav-item-btn").forEach(btn => {
+      if (btn.getAttribute("data-nav") === tabId) {
+        btn.classList.add("active");
+      } else {
+        btn.classList.remove("active");
+      }
+    });
+
+    // Update desktop header nav items
+    document.querySelectorAll(".desktop-nav-btn").forEach(btn => {
       if (btn.getAttribute("data-nav") === tabId) {
         btn.classList.add("active");
       } else {
