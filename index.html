@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="myQuran - Media Pembelajaran Interaktif Al-Qur'an Hadits MTs Berdasarkan KMA No. 183 Tahun 2019.">
+  <meta name="theme-color" content="#10b981">
+  <title>myQuran | Al-Qur'an Hadits MTs (KMA 183 Tahun 2019)</title>
+  
+  <!-- CSS Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ==========================================================================
+       TOP UTILITY BAR (LAYOUT TOGGLE & QUICK INFO)
+       ========================================================================== -->
+  <div class="top-utility-bar">
+    <button class="mode-toggle-btn" id="btnToggleLayout">
+      <span id="layoutToggleIcon">📱</span>
+      <span id="layoutToggleText">Mode Ponsel (myQuran)</span>
+    </button>
+    <div class="qari-top-badge" title="Qari: Syaikh Misyari Rasyid Al-Afasy (Kuwait)">
+      🎙️ Syaikh Misyari Rasyid
+    </div>
+    <div class="kma-badge-pill" id="btnOpenCurriculumTop" style="cursor: pointer;" title="Klik untuk lihat Pemetaan KI/KD KMA 183">
+      📜 KMA No. 183
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       APP DEVICE FRAME (CENTRAL MOBILE / TABLET SHELL)
+       ========================================================================== -->
+  <div class="app-device-frame" id="appDeviceFrame">
+    
+    <!-- APP HEADER -->
+    <header class="app-header">
+      <button class="header-icon-btn" id="btnHeaderMenu" title="Menu & Peta Kurikulum">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="12" x2="15" y2="12"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+
+      <div class="app-title-box" onclick="window.quranApp.switchTab('beranda')">
+        <span class="app-title-text">myQuran</span>
+        <span class="app-subtitle-text">Al-Qur'an Hadits MTs</span>
+      </div>
+
+      <div class="header-profile-avatar" id="profileTrigger" title="Profil Siswa">
+        👨‍🎓
+      </div>
+    </header>
+
+    <!-- APP CONTENT BODY -->
+    <div class="app-content-body">
+
+      <!-- ====================================================================
+           TAB 0: SCREEN 1 - HOME DASHBOARD (Matching Reference Image)
+           ==================================================================== -->
+      <section id="tab-beranda" class="tab-pane active">
+        <!-- 3D Quran on Wooden Rehal Showcase -->
+        <div class="quran-3d-showcase">
+          <img src="images/quran_rehal_3d.jpg" alt="Holy Quran on Wooden Rehal Stand" class="quran-3d-image" onclick="window.quranApp.switchTab('tajwid')" title="Klik untuk mulai belajar">
+        </div>
+
+        <!-- "Last Read" Featured Emerald Wave Card -->
+        <div class="last-read-card" onclick="window.quranApp.switchTab('tajwid')">
+          <!-- Decorative Waves -->
+          <svg class="last-read-wave-svg" viewBox="0 0 160 120" fill="none">
+            <path d="M0 60 C40 20, 100 90, 160 40 L160 120 L0 120 Z" fill="rgba(255,255,255,0.18)"></path>
+            <path d="M0 80 C50 40, 110 110, 160 70 L160 120 L0 120 Z" fill="rgba(255,255,255,0.12)"></path>
+          </svg>
+
+          <div class="last-read-content">
+            <div>
+              <div class="last-read-tag">
+                <span>📖</span> Terakhir Dipelajari
+              </div>
+              <h3 class="last-read-title">QS. Al-Fajr: 15</h3>
+              <p class="last-read-verse">Mad 'Iwadh & Ujian Rezeki • Ayat No. 15</p>
+              <button class="btn-last-read-play" id="btnPlayLastRead" title="Putar Murottal Syaikh Misyari Rasyid">
+                <span>▶</span> Putar Misyari Rasyid
+              </button>
+            </div>
+            <div class="mosque-icon-box">
+              🕌
+            </div>
+          </div>
+        </div>
+
+        <!-- Student Score Quick Info -->
+        <div class="student-home-bar">
+          <div style="display: flex; align-items: center; gap: 0.65rem;">
+            <span style="font-size: 1.35rem;">⭐</span>
+            <div>
+              <div style="font-size: 0.72rem; color: var(--text-muted); font-weight: 600;">Skor Akumulasi Siswa</div>
+              <div style="font-size: 0.95rem; font-weight: 800; color: var(--primary-dark);">
+                <span id="headerTotalScore">185 XP</span> • <span id="headerStudentName" style="color: var(--primary-emerald);">Fatih</span>
+              </div>
+            </div>
+          </div>
+          <button class="btn btn-subtle btn-sm" onclick="window.quranApp.switchTab('guru')" style="font-size: 0.72rem;">
+            Rekap Nilai →
+          </button>
+        </div>
+
+        <!-- 4 Colorful Feature Tiles (2x2 Grid Matching Image) -->
+        <div class="feature-tiles-grid">
+          <!-- Tile 1: Quran (Lab Tajwid) - Cyan/Teal -->
+          <div class="feature-tile-card tile-cyan" onclick="window.quranApp.switchTab('tajwid')">
+            <div class="tile-icon-box">📖</div>
+            <div class="tile-info">
+              <h4>Quran & Tajwid</h4>
+              <div class="tile-link">Go to &gt;</div>
+            </div>
+          </div>
+
+          <!-- Tile 2: Memorize (Tahfidz) - Pink/Magenta -->
+          <div class="feature-tile-card tile-pink" onclick="window.quranApp.switchTab('tahfidz')">
+            <div class="tile-icon-box">🌙</div>
+            <div class="tile-info">
+              <h4>Memorize</h4>
+              <div class="tile-progress-bar">
+                <div class="tile-progress-fill" style="width: 65%;"></div>
+              </div>
+              <div class="tile-link">Go to &gt;</div>
+            </div>
+          </div>
+
+          <!-- Tile 3: Tajwid List (Gharib) - Purple/Violet -->
+          <div class="feature-tile-card tile-purple" onclick="window.quranApp.switchTab('tajwid'); window.quranApp.switchTajwidSub('gharib');">
+            <div class="tile-icon-box">🔍</div>
+            <div class="tile-info">
+              <h4>Tajwid list</h4>
+              <div class="tile-link">Go to &gt;</div>
+            </div>
+          </div>
+
+          <!-- Tile 4: Bookmarks / AI Simulator - Mint/Emerald -->
+          <div class="feature-tile-card tile-mint" onclick="window.quranApp.switchTab('ai_simulator')">
+            <div class="tile-icon-box">🤖</div>
+            <div class="tile-info">
+              <h4>Simulator AI</h4>
+              <div class="tile-link">Go to &gt;</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick Access to Curriculum Directory (Screen 2 preview) -->
+        <div class="section-header" style="margin-top: 1.5rem; margin-bottom: 0.75rem;">
+          <h4 class="section-title"><span>📜</span> Daftar Surah & Pokok Bahasan KMA 183</h4>
+          <span style="font-size: 0.75rem; color: var(--primary-emerald); font-weight: 700; cursor: pointer;" onclick="window.quranApp.openCurriculumModal()">Lihat KI/KD</span>
+        </div>
+
+        <div class="surah-list-container">
+          <!-- Item 1 -->
+          <div class="surah-item-card" onclick="window.quranApp.switchTab('tajwid')">
+            <div class="surah-left-box">
+              <div class="rub-star-badge">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                  <path d="M12 2l2.6 3.8 4.6-.3 1.4 4.4 3.9 2.6-1.4 4.4 1.4 4.4-3.9 2.6-1.4 4.4-4.6-.3L12 22l-2.6-3.7-4.6.3-1.4-4.4-3.9-2.6 1.4-4.4-1.4-4.4 3.9-2.6 1.4-4.4 4.6.3L12 2z"></path>
+                  <circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="0.8"></circle>
+                </svg>
+                <span class="rub-star-num">1</span>
+              </div>
+              <div class="surah-info-text">
+                <h5>Al-Fatihah</h5>
+                <p>Makkiyah • 7 Ayat • Ummul Qur'an</p>
+              </div>
+            </div>
+            <div style="display: flex; align-items: center; gap: 0.5rem;">
+              <div class="surah-arabic-title">الفاتحة</div>
+              <button class="btn-surah-play" data-surah-key="fatihah" title="Putar Murottal Syaikh Misyari Rasyid" onclick="event.stopPropagation(); window.quranApp.playSurahAudio('surah_fatihah');">▶</button>
+            </div>
+          </div>
+
+          <!-- Item 2 -->
+          <div class="surah-item-card" onclick="window.quranApp.switchTab('tahfidz')">
+            <div class="surah-left-box">
+              <div class="rub-star-badge">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                  <path d="M12 2l2.6 3.8 4.6-.3 1.4 4.4 3.9 2.6-1.4 4.4 1.4 4.4-3.9 2.6-1.4 4.4-4.6-.3L12 22l-2.6-3.7-4.6.3-1.4-4.4-3.9-2.6 1.4-4.4-1.4-4.4 3.9-2.6 1.4-4.4 4.6.3L12 2z"></path>
+                  <circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="0.8"></circle>
+                </svg>
+                <span class="rub-star-num">2</span>
+              </div>
+              <div class="surah-info-text">
+                <h5>QS. Al-Baqarah: 254 & 261</h5>
+                <p>Madaniyah • Keutamaan Infak & Sedekah</p>
+              </div>
+            </div>
+            <div style="display: flex; align-items: center; gap: 0.5rem;">
+              <div class="surah-arabic-title">البقرة</div>
+              <button class="btn-surah-play" data-surah-key="baqarah" title="Putar Murottal Syaikh Misyari Rasyid" onclick="event.stopPropagation(); window.quranApp.playSurahAudio('surah_baqarah');">▶</button>
+            </div>
+          </div>
+
+          <!-- Item 3 -->
+          <div class="surah-item-card" onclick="window.quranApp.switchTab('ai_simulator')">
+            <div class="surah-left-box">
+              <div class="rub-star-badge">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                  <path d="M12 2l2.6 3.8 4.6-.3 1.4 4.4 3.9 2.6-1.4 4.4 1.4 4.4-3.9 2.6-1.4 4.4-4.6-.3L12 22l-2.6-3.7-4.6.3-1.4-4.4-3.9-2.6 1.4-4.4-1.4-4.4 3.9-2.6 1.4-4.4 4.6.3L12 2z"></path>
+                  <circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="0.8"></circle>
+                </svg>
+                <span class="rub-star-num">3</span>
+              </div>
+              <div class="surah-info-text">
+                <h5>QS. Al-Fajr: 15–18</h5>
+                <p>Makkiyah • Ujian Kelapangan & Kesempitan</p>
+              </div>
+            </div>
+            <div style="display: flex; align-items: center; gap: 0.5rem;">
+              <div class="surah-arabic-title">الفجر</div>
+              <button class="btn-surah-play" data-surah-key="fajr" title="Putar Murottal Syaikh Misyari Rasyid" onclick="event.stopPropagation(); window.quranApp.playSurahAudio('surah_fajr');">▶</button>
+            </div>
+          </div>
+
+          <!-- Item 4 -->
+          <div class="surah-item-card" onclick="window.quranApp.switchTab('tajwid')">
+            <div class="surah-left-box">
+              <div class="rub-star-badge">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                  <path d="M12 2l2.6 3.8 4.6-.3 1.4 4.4 3.9 2.6-1.4 4.4 1.4 4.4-3.9 2.6-1.4 4.4-4.6-.3L12 22l-2.6-3.7-4.6.3-1.4-4.4-3.9-2.6 1.4-4.4-1.4-4.4 3.9-2.6 1.4-4.4 4.6.3L12 2z"></path>
+                  <circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="0.8"></circle>
+                </svg>
+                <span class="rub-star-num">4</span>
+              </div>
+              <div class="surah-info-text">
+                <h5>QS. An-Naba: 6–7</h5>
+                <p>Makkiyah • Hukum Mad 'Iwadh</p>
+              </div>
+            </div>
+            <div style="display: flex; align-items: center; gap: 0.5rem;">
+              <div class="surah-arabic-title">النبأ</div>
+              <button class="btn-surah-play" data-surah-key="naba" title="Putar Murottal Syaikh Misyari Rasyid" onclick="event.stopPropagation(); window.quranApp.playSurahAudio('surah_naba');">▶</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      <!-- ====================================================================
+           TAB 1: MENU 1 - LAB TAJWID & GHARIB (Screen 3 Practice Style)
+           ==================================================================== -->
+      <section id="tab-tajwid" class="tab-pane">
+        <!-- Segmented Sub-tab -->
+        <div class="segmented-nav-wrapper">
+          <button class="segmented-tab-btn tajwid-sub-btn active" data-sub="mad">
+            Hukum Bacaan Mad
+          </button>
+          <button class="segmented-tab-btn tajwid-sub-btn" data-sub="gharib">
+            Bacaan Gharib
+          </button>
+        </div>
+
+        <!-- Topic Pills -->
+        <div class="scenario-selector-grid" id="tajwidTopicsPills" style="margin-bottom: 0.85rem;"></div>
+
+        <!-- Practice Detail Header Card (Matching Screen 3) -->
+        <div class="subview-header-card">
+          <div class="rub-star-badge" style="margin: 0 auto 0.5rem; color: #ffffff;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <path d="M12 2l2.6 3.8 4.6-.3 1.4 4.4 3.9 2.6-1.4 4.4 1.4 4.4-3.9 2.6-1.4 4.4-4.6-.3L12 22l-2.6-3.7-4.6.3-1.4-4.4-3.9-2.6 1.4-4.4-1.4-4.4 3.9-2.6 1.4-4.4 4.6.3L12 2z"></path>
+              <circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="0.8"></circle>
+            </svg>
+            <span class="rub-star-num" style="color: #ffffff;">95</span>
+          </div>
+          <h3 class="subview-header-title" id="verseTitle">Mad 'Iwadh</h3>
+          <p class="subview-header-sub" id="verseSubtitle">QS. An-Naba: 6–7</p>
+        </div>
+
+        <!-- Bismillah Calligraphy (from Screen 3) -->
+        <div class="bismillah-text">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
+
+        <!-- Fitur 1: Bedah Ayat Card -->
+        <div class="dissector-card">
+          <!-- Reciter Banner Box (Syaikh Misyari Rasyid) -->
+          <div class="reciter-banner-box">
+            <div class="reciter-info-left">
+              <div class="reciter-avatar-circle">🎙️</div>
+              <div>
+                <div class="reciter-text-title">Syaikh Misyari Rasyid Al-Afasy</div>
+                <div class="reciter-text-sub">Qari Internasional (Kuwait)</div>
+              </div>
+            </div>
+            <button id="btnPlayFullVerse" class="btn-reciter-play" title="Putar Murottal Syaikh Misyari Rasyid">
+              <span id="playIconSpan">▶</span>
+              <span id="playTextSpan">Tartil Misyari Rasyid</span>
+              <span class="sound-wave-eq" id="headerAudioWave">
+                <span></span><span></span><span></span>
+              </span>
+            </button>
+          </div>
+
+          <div class="verse-action-bar">
+            <div style="display: flex; align-items: center; gap: 0.5rem;">
+              <div class="verse-num-pill">1</div>
+              <span style="font-size: 0.78rem; font-weight: 700; color: var(--primary-dark);" id="verseMission">Klik kata Mad 'Iwadh!</span>
+            </div>
+            <div class="verse-icons-group">
+              <span title="Salin / Bagikan">🔗</span>
+              <span title="Tandai">🔖</span>
+            </div>
+          </div>
+
+          <!-- Clickable Arabic Words -->
+          <div class="puzzle-answer-box" id="verseTokensContainer" style="border: none; background: #fafdfc; padding: 1.25rem 0.5rem;"></div>
+
+          <!-- Translation -->
+          <p id="verseTranslation" style="font-size: 0.85rem; color: var(--text-muted); font-style: italic; line-height: 1.5; margin-bottom: 0.5rem;"></p>
+          <p id="versePhonetic" style="font-size: 0.75rem; color: var(--primary-teal); font-weight: 600;"></p>
+
+          <!-- Explanation Pop-up Card -->
+          <div class="explanation-card" id="tajwidExplanationCard" style="display: none; margin-top: 1rem; background: var(--primary-soft); border: 1.5px solid var(--primary-emerald); border-radius: var(--radius-md); padding: 0.85rem;">
+            <h5 id="explanationTitle" style="font-size: 0.88rem; font-weight: 800; color: var(--primary-dark); margin-bottom: 0.35rem;"></h5>
+            <div id="explanationContent" style="font-size: 0.8rem; line-height: 1.5;"></div>
+          </div>
+        </div>
+
+        <!-- Fitur 2: Visualizer Ketukan & Metronom -->
+        <div class="vis-card">
+          <div class="section-header" style="margin-bottom: 0.65rem;">
+            <h4 class="section-title">⏱️ Visualizer Ketukan Harakat</h4>
+            <span style="font-size: 0.72rem; font-weight: 700; color: var(--primary-emerald);">Kaidah Tartil</span>
+          </div>
+          
+          <div style="display: flex; gap: 0.4rem; margin-bottom: 0.75rem;">
+            <button class="beat-btn active" data-beats="2">2 Ketukan</button>
+            <button class="beat-btn" data-beats="4">4 Ketukan</button>
+            <button class="beat-btn" data-beats="6">6 Ketukan</button>
+          </div>
+
+          <div class="metronome-visualizer" id="metronomeBeads"></div>
+
+          <div style="display: flex; align-items: center; justify-content: space-between;">
+            <button class="btn btn-primary btn-sm" id="btnToggleMetronome">
+              ▶ Mulai Ketukan
+            </button>
+            <span style="font-size: 0.72rem; color: var(--text-muted);">Tempo: 60 BPM</span>
+          </div>
+        </div>
+
+        <!-- Gharib Articulation Guide -->
+        <div class="vis-card" id="gharibGuideCard" style="display: none;">
+          <h4 class="section-title" id="gharibGuideTitle" style="margin-bottom: 0.4rem;">Panduan Cara Baca</h4>
+          <p id="gharibGuideRule" style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 0.35rem;"></p>
+          <p id="gharibGuideMouth" style="font-size: 0.8rem; color: var(--primary-teal); font-weight: 700;"></p>
+        </div>
+
+        <!-- Fitur 3: Studio Rekaman Suara Mandiri -->
+        <div class="recorder-card">
+          <div class="section-header" style="margin-bottom: 0.65rem;">
+            <h4 class="section-title">🎙️ Studio Rekam Suara Mandiri</h4>
+            <div style="display: flex; align-items: center; gap: 0.35rem;">
+              <span id="recDot" style="width: 10px; height: 10px; border-radius: 50%; background: #cbd5e1; display: inline-block;"></span>
+              <span id="recStatusText" style="font-size: 0.72rem; color: var(--text-muted);">Siap</span>
+            </div>
+          </div>
+
+          <canvas id="audioWaveCanvas" class="waveform-canvas" width="600" height="75" style="width: 100%; height: 75px; background: #064e3b; border-radius: var(--radius-md); margin-bottom: 0.75rem;"></canvas>
+
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; flex-wrap: wrap; gap: 0.5rem;">
+            <div style="display: flex; gap: 0.5rem;">
+              <button class="btn btn-primary btn-sm" id="btnStartRecord">🔴 Mulai Rekam</button>
+              <button class="btn btn-subtle btn-sm" id="btnStopRecord" disabled>⏹️ Berhenti</button>
+            </div>
+            <audio id="userAudioPlayer" controls style="display: none; max-width: 200px; height: 32px;"></audio>
+          </div>
+
+          <div style="background: var(--surface-subtle); padding: 0.75rem; border-radius: var(--radius-md);">
+            <div style="font-size: 0.75rem; font-weight: 700; margin-bottom: 0.4rem; color: var(--primary-dark);">Rubrik Evaluasi Diri (+10 Poin):</div>
+            <label style="display: flex; align-items: center; gap: 0.4rem; font-size: 0.78rem; margin-bottom: 0.3rem;">
+              <input type="checkbox" class="eval-check" id="evalCheck1"> Ketepatan panjang ketukan harakat.
+            </label>
+            <label style="display: flex; align-items: center; gap: 0.4rem; font-size: 0.78rem; margin-bottom: 0.5rem;">
+              <input type="checkbox" class="eval-check" id="evalCheck2"> Kejelasan makharijul huruf & gharib.
+            </label>
+            <button class="btn btn-emerald btn-sm" id="btnSaveSelfEval" style="width: 100%;">Simpan Evaluasi Mandiri</button>
+          </div>
+        </div>
+      </section>
+
+
+      <!-- ====================================================================
+           TAB 2: MENU 2 - ARENA TAHFIDZ & MUFRADAT
+           ==================================================================== -->
+      <section id="tab-tahfidz" class="tab-pane">
+        <!-- Gim Pasangkan Mufradat -->
+        <div class="game-wrapper">
+          <div class="section-header">
+            <div>
+              <h4 class="section-title">⚡ Speed Matching Mufradat</h4>
+              <p class="section-subtitle">Pasangkan kosakata Arab dengan terjemahannya!</p>
+            </div>
+            <select id="matchSetSelect" class="form-input" style="max-width: 170px; font-size: 0.75rem;">
+              <option value="0">QS. Al-Fajr: 15–18</option>
+              <option value="1">QS. Al-Baqarah: 254</option>
+              <option value="2">Hadits Etos Kerja</option>
+            </select>
+          </div>
+
+          <div style="display: flex; justify-content: space-between; align-items: center; background: var(--primary-soft); padding: 0.5rem 0.85rem; border-radius: var(--radius-md); margin-bottom: 0.85rem;">
+            <span style="font-size: 0.75rem; font-weight: 700;">Waktu: <strong id="matchTimer" style="color: #ef4444;">60s</strong></span>
+            <span style="font-size: 0.75rem; font-weight: 700;">Cocok: <strong id="matchScore">0/6</strong></span>
+            <button class="btn btn-subtle btn-sm" id="btnRestartMatch" style="padding: 0.2rem 0.6rem; font-size: 0.7rem;">🔄 Ulangi</button>
+          </div>
+
+          <div class="matching-board">
+            <div id="matchArabCol" style="display: flex; flex-direction: column; gap: 0.5rem;"></div>
+            <div id="matchIndoCol" style="display: flex; flex-direction: column; gap: 0.5rem;"></div>
+          </div>
+        </div>
+
+        <!-- Puzzle Susun Ayat -->
+        <div class="game-wrapper">
+          <div class="section-header">
+            <div>
+              <h4 class="section-title">🧩 Puzzle Susun Ayat & Hadits</h4>
+              <p class="section-subtitle">Susun lafadz Arab berurutan dari kanan ke kiri!</p>
+            </div>
+            <select id="puzzleLevelSelect" class="form-input" style="max-width: 170px; font-size: 0.75rem;">
+              <option value="0">Tantangan 1: Hadits</option>
+              <option value="1">Tantangan 2: Al-Baqarah</option>
+              <option value="2">Tantangan 3: An-Naba</option>
+            </select>
+          </div>
+
+          <div style="background: var(--surface-subtle); padding: 0.65rem 0.85rem; border-radius: var(--radius-md); margin-bottom: 0.85rem;">
+            <div style="font-size: 0.7rem; font-weight: 700; color: var(--primary-dark); text-transform: uppercase;">Terjemahan Petunjuk:</div>
+            <div id="puzzleClueText" style="font-size: 0.82rem; font-style: italic; color: var(--text-main);">"Tangan yang di atas lebih baik daripada tangan yang di bawah."</div>
+          </div>
+
+          <!-- Answer Box (RTL) -->
+          <div class="puzzle-answer-box" id="puzzleAnswerBox"></div>
+
+          <!-- Pool of Scrambled Chips -->
+          <div class="puzzle-pool-box" id="puzzlePoolBox"></div>
+
+          <div style="display: flex; justify-content: flex-end; gap: 0.5rem; flex-wrap: wrap;">
+            <button class="btn btn-subtle btn-sm" id="btnListenPuzzleAudio" title="Dengarkan Murottal Syaikh Misyari Rasyid">
+              🔊 Dengarkan Tartil
+            </button>
+            <button class="btn btn-subtle btn-sm" id="btnResetPuzzle">Reset</button>
+            <button class="btn btn-primary btn-sm" id="btnCheckPuzzle">Periksa (+25 Poin)</button>
+          </div>
+        </div>
+
+        <!-- Live Leaderboard Kelas -->
+        <div class="leaderboard-card">
+          <div class="section-header">
+            <h4 class="section-title">🏆 Papan Peringkat Kelas VIII</h4>
+            <span style="font-size: 0.72rem; color: var(--gold-600); font-weight: 700;">Live Real-Time</span>
+          </div>
+          <table style="width: 100%; border-collapse: collapse;">
+            <thead>
+              <tr style="border-bottom: 1.5px solid var(--border-clean); font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase;">
+                <th style="padding: 0.4rem; text-align: left;">Rank</th>
+                <th style="padding: 0.4rem; text-align: left;">Nama</th>
+                <th style="padding: 0.4rem; text-align: right;">Skor</th>
+              </tr>
+            </thead>
+            <tbody id="leaderboardBody"></tbody>
+          </table>
+        </div>
+      </section>
+
+
+      <!-- ====================================================================
+           TAB 3: MENU 3 - SIMULATOR KONTEKSTUAL AI (HOTS)
+           ==================================================================== -->
+      <section id="tab-ai_simulator" class="tab-pane">
+        <div class="section-header">
+          <div>
+            <h4 class="section-title">🤖 Simulator AI: Dilema Remaja MTs</h4>
+            <p class="section-subtitle">Pemecahan masalah afektif & penalaran HOTS berlandaskan wahyu</p>
+          </div>
+        </div>
+
+        <!-- 3 Scenarios Selector Pills -->
+        <div class="scenario-selector-grid">
+          <div class="scenario-card-select active" data-index="0">
+            <h4>📖 Skenario 1: Ujian Rezeki</h4>
+            <p>QS. Al-Fajr: 15–18</p>
+          </div>
+          <div class="scenario-card-select" data-index="1">
+            <h4>💰 Skenario 2: Infak vs Konsumtif</h4>
+            <p>QS. Al-Baqarah: 254 & 261</p>
+          </div>
+          <div class="scenario-card-select" data-index="2">
+            <h4>🤝 Skenario 3: Tangan di Atas</h4>
+            <p>HR. Bukhari-Muslim</p>
+          </div>
+        </div>
+
+        <!-- Active Scenario Card -->
+        <div class="active-scenario-box">
+          <div class="scenario-dalil-banner">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; flex-wrap: wrap; gap: 0.4rem;">
+              <span class="dalil-ref-badge" id="scenarioDalilRef">Landasan Dalil: QS. Al-Fajr: 15–18</span>
+              <button class="btn-dalil-audio" id="btnPlayScenarioDalil" title="Dengarkan Dalil (Syaikh Misyari Rasyid)">
+                <span>▶</span> Murottal Syaikh Misyari Rasyid
+              </button>
+            </div>
+            <div class="dalil-arabic-text" id="scenarioArabicDalil">فَأَمَّا الْإِنسَانُ إِذَا مَا ابْتَلَاهُ رَبُّهُ فَأَكْرَمَهُ وَنَعَّمَهُ فَيَقُولُ رَبِّي أَكْرَمَنِ</div>
+          </div>
+
+          <div id="scenarioNarrative" style="font-size: 0.85rem; line-height: 1.6; margin-bottom: 0.85rem; color: var(--text-main);"></div>
+
+          <h5 id="scenarioQuestion" style="font-size: 0.88rem; font-weight: 800; color: var(--primary-dark); margin-bottom: 0.65rem;"></h5>
+
+          <!-- Options -->
+          <div id="decisionOptionsContainer" style="margin-bottom: 0.85rem;"></div>
+
+          <!-- Essay Textarea -->
+          <div style="margin-bottom: 1rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.4rem; flex-wrap: wrap; gap: 0.35rem;">
+              <span style="font-size: 0.78rem; font-weight: 700; color: var(--primary-dark);">Argumen & Analisis Dalil:</span>
+              <button class="btn-fill-ideal" id="btnFillIdeal">✨ Isi Contoh Jawaban Ideal (Demo Juri)</button>
+            </div>
+            <textarea id="argumentTextarea" class="argument-textarea" placeholder="Tuliskan argumen Anda..."></textarea>
+          </div>
+
+          <button class="btn btn-primary" id="btnSubmitAi" style="width: 100%;">
+            🤖 Kirim & Analisis dengan AI
+          </button>
+
+          <!-- AI Evaluation Card -->
+          <div class="ai-result-card" id="aiResultCard" style="display: none; margin-top: 1.25rem; border: 1.5px solid var(--primary-emerald); border-radius: var(--radius-lg); padding: 1.15rem; background: #ffffff;">
+            <div class="ai-score-banner">
+              <div class="ai-score-circle">
+                <span class="ai-score-num" id="aiScoreNum">95</span>
+                <span class="ai-score-label">HOTS</span>
+              </div>
+              <div>
+                <h5 style="font-size: 0.95rem; font-weight: 800; color: var(--primary-dark);">Refleksi Islami Unggul</h5>
+                <p style="font-size: 0.75rem; color: var(--text-muted);">Terverifikasi KMA No. 183 Tahun 2019</p>
+              </div>
+            </div>
+
+            <div style="display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 0.75rem;">
+              <div style="background: var(--surface-subtle); padding: 0.65rem; border-radius: var(--radius-md);">
+                <div style="font-size: 0.72rem; font-weight: 700; color: var(--primary-dark);">Sikap & Afektif:</div>
+                <div id="evalAttitude" style="font-size: 0.8rem;"></div>
+              </div>
+              <div style="background: var(--surface-subtle); padding: 0.65rem; border-radius: var(--radius-md);">
+                <div style="font-size: 0.72rem; font-weight: 700; color: var(--primary-dark);">Kekuatan Dalil:</div>
+                <div id="evalDalil" style="font-size: 0.8rem;"></div>
+              </div>
+              <div style="background: var(--surface-subtle); padding: 0.65rem; border-radius: var(--radius-md);">
+                <div style="font-size: 0.72rem; font-weight: 700; color: var(--primary-dark);">Kedalaman Refleksi:</div>
+                <div id="evalHots" style="font-size: 0.8rem;"></div>
+              </div>
+            </div>
+
+            <div style="background: var(--gold-50); border-left: 3px solid var(--gold-500); padding: 0.75rem; border-radius: var(--radius-sm);">
+              <div style="font-size: 0.75rem; font-weight: 800; color: var(--gold-700); margin-bottom: 0.2rem;">👳‍♂️ Pesan Ustadz AI Pembimbing:</div>
+              <p id="ustadzNotes" style="font-size: 0.78rem; font-style: italic;"></p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      <!-- ====================================================================
+           TAB 4: MENU 4 - PANEL GURU & REKAP NILAI
+           ==================================================================== -->
+      <section id="tab-guru" class="tab-pane">
+        <div class="section-header">
+          <div>
+            <h4 class="section-title">📊 Panel Guru & Rekap Nilai</h4>
+            <p class="section-subtitle">Rekapitulasi ketuntasan dan pengaturan sistem</p>
+          </div>
+          <button class="btn btn-emerald btn-sm" id="btnDownloadCsv">
+            📥 Unduh CSV
+          </button>
+        </div>
+
+        <div class="teacher-card">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+            <div>
+              <h5 style="font-size: 1.05rem; font-weight: 800;" id="teacherStudentName">Fatih Al-Ayyubi</h5>
+              <p style="font-size: 0.75rem; color: var(--text-muted);" id="teacherStudentClass">Kelas VIII-A MTs</p>
+            </div>
+            <div style="text-align: right;">
+              <div style="font-size: 0.7rem; color: var(--text-muted);">Predikat:</div>
+              <div style="font-size: 0.88rem; font-weight: 800; color: var(--primary-emerald);" id="teacherPredikat">Mumtaz</div>
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem; margin-bottom: 1rem;">
+            <div style="background: var(--surface-subtle); padding: 0.65rem; border-radius: var(--radius-md); text-align: center;">
+              <div id="teacherTajwidScore" style="font-size: 1.15rem; font-weight: 800; color: var(--primary-dark);">80</div>
+              <div style="font-size: 0.68rem; color: var(--text-muted);">Lab Tajwid</div>
+            </div>
+            <div style="background: var(--surface-subtle); padding: 0.65rem; border-radius: var(--radius-md); text-align: center;">
+              <div id="teacherTahfidzScore" style="font-size: 1.15rem; font-weight: 800; color: var(--primary-dark);">65</div>
+              <div style="font-size: 0.68rem; color: var(--text-muted);">Tahfidz</div>
+            </div>
+            <div style="background: var(--surface-subtle); padding: 0.65rem; border-radius: var(--radius-md); text-align: center;">
+              <div id="teacherHotsScore" style="font-size: 1.15rem; font-weight: 800; color: var(--primary-dark);">175</div>
+              <div style="font-size: 0.68rem; color: var(--text-muted);">Simulator AI</div>
+            </div>
+          </div>
+
+          <div style="background: var(--gold-50); border: 1px solid var(--gold-400); border-radius: var(--radius-md); padding: 0.75rem; display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+            <span style="font-size: 0.8rem; font-weight: 700;">Total Poin Siswa:</span>
+            <span id="teacherTotalScore" style="font-size: 1.15rem; font-weight: 800; color: var(--gold-600);">320 XP</span>
+          </div>
+
+          <h5 style="font-size: 0.82rem; font-weight: 800; margin-bottom: 0.5rem;">📋 Riwayat Log Asesmen:</h5>
+          <table style="width: 100%; border-collapse: collapse; font-size: 0.75rem;">
+            <tbody id="teacherAssessmentsBody"></tbody>
+          </table>
+        </div>
+
+        <!-- API Settings Card -->
+        <div class="teacher-card">
+          <h5 style="font-size: 0.95rem; font-weight: 800; margin-bottom: 0.75rem;">⚙️ Pengaturan Evaluator AI</h5>
+          <div style="margin-bottom: 0.75rem;">
+            <label style="font-size: 0.75rem; font-weight: 700;">Google Gemini API Key:</label>
+            <input type="password" id="apiKeyInput" class="form-input" placeholder="Masukkan AIzaSy... (Opsional)">
+          </div>
+          <div style="display: flex; gap: 0.4rem; margin-bottom: 0.75rem;">
+            <button class="btn btn-emerald btn-sm" id="btnSaveApiKey">💾 Simpan</button>
+            <button class="btn btn-subtle btn-sm" id="btnTestApiKey">🧪 Uji Koneksi</button>
+          </div>
+          <div id="apiStatusBadge" style="font-size: 0.72rem; padding: 0.4rem 0.65rem; border-radius: var(--radius-full); background: var(--gold-50); border: 1px solid var(--gold-400); color: var(--gold-700);">
+            ⚡ Mode Mandiri: Smart Heuristic Fallback Aktif (100% Offline Ready)
+          </div>
+          <hr style="border: none; border-top: 1px solid var(--border-clean); margin: 0.85rem 0;">
+          <button class="btn btn-subtle btn-sm" id="btnResetSession" style="color: #ef4444; width: 100%;">
+            🗑️ Ganti Siswa / Reset Sesi
+          </button>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- FLOATING QURAN AUDIO PLAYER (Syaikh Misyari Rasyid Al-Afasy) -->
+    <div class="global-audio-player" id="globalAudioPlayer" style="display: none;">
+      <div class="gap-top-bar">
+        <div class="gap-reciter-info">
+          <div class="gap-avatar">🎙️</div>
+          <div class="gap-meta">
+            <span class="gap-title" id="gapTrackTitle">QS. An-Naba: 6–7</span>
+            <span class="gap-reciter" id="gapReciterName">Syaikh Misyari Rasyid Al-Afasy</span>
+          </div>
+        </div>
+        <div class="gap-actions">
+          <button class="gap-btn" id="gapBtnRepeat" title="Ulangi Bacaan (Repeat)">🔁</button>
+          <button class="gap-btn gap-play-btn" id="gapBtnPlayPause" title="Jeda / Lanjutkan">⏸️</button>
+          <button class="gap-btn" id="gapBtnStop" title="Tutup / Hentikan">⏹️</button>
+        </div>
+      </div>
+      <div class="gap-progress-wrapper">
+        <span class="gap-time" id="gapCurrentTime">00:00</span>
+        <div class="gap-progress-bar" id="gapProgressBar">
+          <div class="gap-progress-fill" id="gapProgressFill" style="width: 0%;"></div>
+        </div>
+        <span class="gap-time" id="gapTotalTime">00:00</span>
+      </div>
+    </div>
+
+    <!-- FLOATING DOCKED BOTTOM NAVIGATION (Matching reference image) -->
+    <nav class="floating-bottom-nav">
+      <button class="nav-item-btn active" data-nav="beranda" onclick="window.quranApp.switchTab('beranda')">
+        <span class="nav-item-icon">🕌</span>
+        <span>Home</span>
+      </button>
+      <button class="nav-item-btn" data-nav="tajwid" onclick="window.quranApp.switchTab('tajwid')">
+        <span class="nav-item-icon">📖</span>
+        <span>Tajwid</span>
+      </button>
+      <button class="nav-item-btn" data-nav="tahfidz" onclick="window.quranApp.switchTab('tahfidz')">
+        <span class="nav-item-icon">🎮</span>
+        <span>Tahfidz</span>
+      </button>
+      <button class="nav-item-btn" data-nav="ai_simulator" onclick="window.quranApp.switchTab('ai_simulator')">
+        <span class="nav-item-icon">🤖</span>
+        <span>AI HOTS</span>
+      </button>
+      <button class="nav-item-btn" data-nav="guru" onclick="window.quranApp.switchTab('guru')">
+        <span class="nav-item-icon">📊</span>
+        <span>Nilai</span>
+      </button>
+    </nav>
+
+  </div>
+
+
+  <!-- ==========================================================================
+       MODAL 1: PEMETAAN KI & KD KMA NO. 183 TAHUN 2019
+       ========================================================================== -->
+  <div class="modal-overlay" id="curriculumModal">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h4 style="font-size: 1.05rem; font-weight: 800; color: var(--primary-dark);">
+          📜 Pemetaan KI & KD KMA No. 183 Tahun 2019
+        </h4>
+        <button class="modal-close-trigger" style="background: none; border: none; font-size: 1.35rem; cursor: pointer;">&times;</button>
+      </div>
+      <div class="modal-body" id="curriculumModalBody"></div>
+      <div class="modal-footer">
+        <button class="btn btn-emerald btn-sm modal-close-trigger">Tutup</button>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ==========================================================================
+       MODAL 2: EDIT PROFIL SISWA
+       ========================================================================== -->
+  <div class="modal-overlay" id="profileModal">
+    <div class="modal-dialog" style="max-width: 400px;">
+      <div class="modal-header">
+        <h4 style="font-size: 1.05rem; font-weight: 800; color: var(--primary-dark);">
+          👤 Ubah Profil Siswa
+        </h4>
+        <button class="modal-close-trigger" style="background: none; border: none; font-size: 1.35rem; cursor: pointer;">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div style="margin-bottom: 0.75rem;">
+          <label style="font-size: 0.75rem; font-weight: 700;">Nama Lengkap Siswa:</label>
+          <input type="text" id="modalInputName" class="form-input" value="Fatih Al-Ayyubi">
+        </div>
+        <div>
+          <label style="font-size: 0.75rem; font-weight: 700;">Kelas & Madrasah:</label>
+          <input type="text" id="modalInputClass" class="form-input" value="Kelas VIII-A MTs">
+        </div>
+      </div>
+      <div class="modal-footer" style="display: flex; gap: 0.5rem;">
+        <button class="btn btn-subtle btn-sm modal-close-trigger">Batal</button>
+        <button class="btn btn-primary btn-sm" id="btnSaveProfile">Simpan</button>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ==========================================================================
+       TOAST CONTAINER
+       ========================================================================== -->
+  <div id="toastContainer" class="toast-container"></div>
+
+
+  <!-- ==========================================================================
+       SCRIPTS
+       ========================================================================== -->
+  <script src="js/data.js"></script>
+  <script src="js/audio.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
