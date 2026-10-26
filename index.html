@@ -38,23 +38,55 @@
       <!-- DESKTOP HEADER NAVIGATION -->
       <nav class="desktop-header-nav" id="desktopHeaderNav">
         <button class="desktop-nav-btn active" data-nav="beranda" onclick="window.quranApp.switchTab('beranda')">
-          <span class="d-nav-icon">🕌</span>
+          <svg class="nav-svg-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2a4 4 0 0 0-4 4v1.5a6 6 0 0 0-5 5.9V21h18v-7.6a6 6 0 0 0-5-5.9V6a4 4 0 0 0-4-4z"/>
+            <path d="M9.5 21v-4.5a2.5 2.5 0 0 1 5 0V21"/>
+            <circle cx="12" cy="11.5" r="1.5" fill="currentColor"/>
+          </svg>
           <span>Beranda</span>
         </button>
         <button class="desktop-nav-btn" data-nav="tajwid" onclick="window.quranApp.switchTab('tajwid')">
-          <span class="d-nav-icon">📖</span>
+          <svg class="nav-svg-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M2 4.5A2.5 2.5 0 0 1 4.5 2H9a3 3 0 0 1 3 3v15a3 3 0 0 0-3-3H4.5A2.5 2.5 0 0 1 2 14.5v-10z"/>
+            <path d="M22 4.5A2.5 2.5 0 0 0 19.5 2H15a3 3 0 0 0-3 3v15a3 3 0 0 1 3-3h4.5a2.5 2.5 0 0 0 2.5-2.5v-10z"/>
+            <path d="M6 7.5h2.5"/>
+            <path d="M15.5 7.5h2.5"/>
+            <path d="M6 11h2"/>
+            <path d="M16 11h2"/>
+          </svg>
           <span>Lab Tajwid</span>
         </button>
         <button class="desktop-nav-btn" data-nav="tahfidz" onclick="window.quranApp.switchTab('tahfidz')">
-          <span class="d-nav-icon">🎮</span>
+          <svg class="nav-svg-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="6" width="20" height="12" rx="6"/>
+            <path d="M6 12h4"/>
+            <path d="M8 10v4"/>
+            <circle cx="15" cy="11" r="1" fill="currentColor"/>
+            <circle cx="17" cy="13" r="1" fill="currentColor"/>
+          </svg>
           <span>Arena Tahfidz</span>
         </button>
         <button class="desktop-nav-btn" data-nav="ai_simulator" onclick="window.quranApp.switchTab('ai_simulator')">
-          <span class="d-nav-icon">🤖</span>
+          <svg class="nav-svg-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="8" width="18" height="12" rx="4"/>
+            <path d="M12 2v6"/>
+            <circle cx="12" cy="2" r="1" fill="currentColor"/>
+            <circle cx="8" cy="13.5" r="1.5" fill="currentColor"/>
+            <circle cx="16" cy="13.5" r="1.5" fill="currentColor"/>
+            <path d="M9.5 17h5"/>
+            <path d="M1 13h2"/>
+            <path d="M21 13h2"/>
+          </svg>
           <span>Simulator AI</span>
         </button>
         <button class="desktop-nav-btn" data-nav="guru" onclick="window.quranApp.switchTab('guru')">
-          <span class="d-nav-icon">📊</span>
+          <svg class="nav-svg-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 20V10"/>
+            <path d="M12 20V4"/>
+            <path d="M6 20v-6"/>
+            <path d="m3.5 11 5-4 5 4 6-6"/>
+            <path d="M17 5h3v3"/>
+          </svg>
           <span>Rekap Nilai</span>
         </button>
       </nav>
@@ -708,25 +740,56 @@
     </div>
 
     <!-- FLOATING DOCKED BOTTOM NAVIGATION (Matching reference image) -->
+    <!-- FLOATING DOCKED BOTTOM NAVIGATION (Matching reference image) -->
     <nav class="floating-bottom-nav">
       <button class="nav-item-btn active" data-nav="beranda" onclick="window.quranApp.switchTab('beranda')">
-        <span class="nav-item-icon">🕌</span>
+        <svg class="nav-svg-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2a4 4 0 0 0-4 4v1.5a6 6 0 0 0-5 5.9V21h18v-7.6a6 6 0 0 0-5-5.9V6a4 4 0 0 0-4-4z"/>
+          <path d="M9.5 21v-4.5a2.5 2.5 0 0 1 5 0V21"/>
+          <circle cx="12" cy="11.5" r="1.5" fill="currentColor"/>
+        </svg>
         <span>Home</span>
       </button>
       <button class="nav-item-btn" data-nav="tajwid" onclick="window.quranApp.switchTab('tajwid')">
-        <span class="nav-item-icon">📖</span>
+        <svg class="nav-svg-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M2 4.5A2.5 2.5 0 0 1 4.5 2H9a3 3 0 0 1 3 3v15a3 3 0 0 0-3-3H4.5A2.5 2.5 0 0 1 2 14.5v-10z"/>
+          <path d="M22 4.5A2.5 2.5 0 0 0 19.5 2H15a3 3 0 0 0-3 3v15a3 3 0 0 1 3-3h4.5a2.5 2.5 0 0 0 2.5-2.5v-10z"/>
+          <path d="M6 7.5h2.5"/>
+          <path d="M15.5 7.5h2.5"/>
+        </svg>
         <span>Tajwid</span>
       </button>
       <button class="nav-item-btn" data-nav="tahfidz" onclick="window.quranApp.switchTab('tahfidz')">
-        <span class="nav-item-icon">🎮</span>
+        <svg class="nav-svg-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="6" width="20" height="12" rx="6"/>
+          <path d="M6 12h4"/>
+          <path d="M8 10v4"/>
+          <circle cx="15" cy="11" r="1" fill="currentColor"/>
+          <circle cx="17" cy="13" r="1" fill="currentColor"/>
+        </svg>
         <span>Tahfidz</span>
       </button>
       <button class="nav-item-btn" data-nav="ai_simulator" onclick="window.quranApp.switchTab('ai_simulator')">
-        <span class="nav-item-icon">🤖</span>
+        <svg class="nav-svg-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="8" width="18" height="12" rx="4"/>
+          <path d="M12 2v6"/>
+          <circle cx="12" cy="2" r="1" fill="currentColor"/>
+          <circle cx="8" cy="13.5" r="1.5" fill="currentColor"/>
+          <circle cx="16" cy="13.5" r="1.5" fill="currentColor"/>
+          <path d="M9.5 17h5"/>
+          <path d="M1 13h2"/>
+          <path d="M21 13h2"/>
+        </svg>
         <span>AI HOTS</span>
       </button>
       <button class="nav-item-btn" data-nav="guru" onclick="window.quranApp.switchTab('guru')">
-        <span class="nav-item-icon">📊</span>
+        <svg class="nav-svg-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M18 20V10"/>
+          <path d="M12 20V4"/>
+          <path d="M6 20v-6"/>
+          <path d="m3.5 11 5-4 5 4 6-6"/>
+          <path d="M17 5h3v3"/>
+        </svg>
         <span>Nilai</span>
       </button>
     </nav>
