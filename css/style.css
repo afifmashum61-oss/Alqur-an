@@ -381,18 +381,6 @@ body {
   margin-top: 0.2rem;
 }
 
-.mosque-icon-box {
-  width: 52px;
-  height: 52px;
-  border-radius: var(--radius-md);
-  background: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(4px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.8rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-}
 
 /* 4 Feature Dashboard Tiles (2x2 Grid from Reference Image) */
 .feature-tiles-grid {
