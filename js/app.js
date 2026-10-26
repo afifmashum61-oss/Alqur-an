@@ -653,7 +653,7 @@ class QuranApp {
     topics.forEach((item, idx) => {
       const pill = document.createElement("button");
       pill.className = `topic-pill ${idx === activeIdx ? "active" : ""}`;
-      pill.textContent = item.title;
+      pill.innerHTML = `<span class="pill-dot"></span><span>${item.title}</span>`;
       pill.addEventListener("click", () => {
         if (isMad) this.activeTajwidTopicIndex = idx;
         else this.activeGharibTopicIndex = idx;
