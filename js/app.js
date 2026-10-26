@@ -632,8 +632,10 @@ class QuranApp {
     });
 
     const bodyEl = document.querySelector(".app-content-body");
-    if (bodyEl) bodyEl.scrollTo({ top: 0, behavior: 'smooth' });
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (bodyEl) {
+      bodyEl.scrollTop = 0;
+    }
+    window.scrollTo(0, 0);
 
     // Refresh tab-specific states
     if (tabId === "tajwid") {
